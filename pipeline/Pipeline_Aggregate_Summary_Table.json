@@ -1,0 +1,45 @@
+{
+	"name": "Pipeline_Aggregate_Summary_Table",
+	"properties": {
+		"activities": [
+			{
+				"name": "Load_Summary_Table",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Aggregate Payroll Data",
+						"type": "DataFlowReference",
+						"parameters": {
+							"dataflow_param_fiscalyear": {
+								"value": "@pipeline().parameters.pl_ficalyear_param",
+								"type": "Expression"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"parameters": {
+			"pl_ficalyear_param": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-08-20T16:04:35Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,44 @@
+{
+	"name": "Load_Employee_Gen2_to_Synapse",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Source_dts_employee_gen2",
+						"type": "DatasetReference"
+					},
+					"name": "Gen2"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Sink_dts_employee_synapse_gen2",
+						"type": "DatasetReference"
+					},
+					"name": "Synapse"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          EmployeeID as string,",
+				"          LastName as string,",
+				"          FirstName as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Gen2",
+				"Gen2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Synapse"
+			]
+		}
+	}
+}
