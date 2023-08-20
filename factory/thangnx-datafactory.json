@@ -1,0 +1,9 @@
+{
+	"name": "thangnx-datafactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ed3d45ea-91a1-4334-b576-ba2f98985b69",
+		"tenantId": "f958e84a-92b8-439f-a62d-4f45996b6d07"
+	}
+}
