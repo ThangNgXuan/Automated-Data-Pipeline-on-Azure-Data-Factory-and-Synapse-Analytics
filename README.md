@@ -105,4 +105,4 @@
 
 ### Azure Architecture ([link]() to draw.io)
 
-<img src="result_image\azure-workflow.gif" class="img-responsive" alt=""> </div>
+<img src="result_images\flowchart.gif" class="img-responsive" alt=""> </div>
